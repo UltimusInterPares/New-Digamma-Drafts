@@ -43,8 +43,8 @@
 	%Lets you choose Greek or Latin characters
 		% Hopefully
 \newcommand{\iform}[2][G]{%
-  \ifx G#1 \bgroup\sffamily\textsuperscript{\tiny x}\egroup\textel{#2}\else
-  \ifx L#1 \bgroup\sffamily\textsuperscript{\tiny x}\egroup\texten{#2}%
+  \ifx G#1 \bgroup\sffamily\texten{\textsuperscript{\tiny x}}\egroup\textel{#2}\else
+  \ifx L#1 \bgroup\sffamily\texten{\textsuperscript{\tiny x}}\egroup\texten{#2}%
   \fi\fi
 }
 			% Well hot damn it works
@@ -56,8 +56,8 @@
 % Various Brackets
 \usepackage{textcomp}
     \newcommand{\ortho}[1]{\texten{\textlangle}#1\texten{\textrangle}} % orthographic notation
-    \newcommand{\phonet}[1]{\texten{[}#1\texten{]}} % phonetic notation
-    \newcommand{\phonem}[1]{\texten{/}#1\texten{/}}
+    \newcommand{\phonet}[1]{[\ipa{#1}]} % phonetic notation
+    \newcommand{\phonem}[1]{/\ipa{#1}/}
     
     \newcommand{\spell}[2]{\ortho{\textel{#1}}~\phonem{\ipa{#2}}}
     

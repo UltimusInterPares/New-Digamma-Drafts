@@ -1,0 +1,41 @@
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[sibling
+        distance=10pt,
+        level distance=25pt]
+    
+        \Tree[.\textel{σ}
+                [.\textel{ρ} 
+                    [.\textel{μ} \textit{v} ]
+                    [.\textel{μ} \textit{c} ] ]
+                ]
+    
+        \begin{scope}[shift={(35pt,0pt)}]
+            \Tree[.\textel{σ} 
+                    [.\textel{ω}
+                        [.\textel{μ} \node(s1){\textit{s}}; ] ]
+                ]
+        \end{scope}
+        
+        \begin{scope}[shift={(85pt, 0pt)}]
+            \Tree[.\textel{σ}
+                    [.\textel{ρ} 
+                        [.\textel{μ} \node(s2){\textit{v:}}; ]
+                        [.\textel{μ} \textit{c} ] ]
+                  ]
+        \end{scope}
+        
+        \begin{scope}[shift={(120pt,0pt)}]
+            \Tree[.\textel{σ} 
+                    [.\textel{ω} 
+                        [.\node(digamma){\textel{μ}}; \textcolor{gray}{$\emptyset$} ] ]
+                ]
+        \end{scope}
+        
+        \draw[->](s1)--(s2);
+        \draw[dotted](digamma)--(s2);
+            
+    \end{tikzpicture}
+    \caption{Compensatory Lengthening by Mora Preservation}
+    \label{fig:Mora-Preservation}
+\end{figure}
