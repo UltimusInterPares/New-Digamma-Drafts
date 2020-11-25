@@ -6,3 +6,9 @@
 \usepackage{lscape}
 \usepackage{graphicx}
 \usepackage{multirow}
+
+% Table Captions
+\AtBeginDocument{%
+    \renewcommand\tablename{Tabula}
+    \renewcommand{\thetable}{\Roman{table}}
+}

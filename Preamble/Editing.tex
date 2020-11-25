@@ -1,0 +1,21 @@
+%%% General Editing
+
+% Counter for Draft Paragraphs and Margin Notes
+\newcounter{dpara}[section]
+\newcommand{\dpara}[1]{\stepcounter{dpara}\label{Par:\thesection:\thedpara}\paragraph{\textcolor{red}{\bgroup\sffamily#1\egroup}}}
+\newcommand{\dnote}[1]{\marginnote{\textcolor{red}{\bgroup\sffamily¶\thesection.\thedpara\\ - #1\egroup}}}
+
+% Margin Notes
+\usepackage{marginnote}
+    \reversemarginpar
+
+% Missing Paragraph
+\usepackage{lipsum}
+    \newcommand{\missingpara}[1]{\dpara{#1}\dnote{Add #1}\textcolor{gray}{\bgroup\sffamily\lipsum[1]\egroup}}
+    
+% Things to be Edited
+\newcommand{\edit}[2]{\textcolor{red}{#1 [\bgroup\sffamily#2\egroup]}}
+
+% Cross Stuff Out
+\usepackage{ulem}
+	\newcommand{\rxout}[1]{\textcolor{red}{\xout{\textcolor{black}{#1}}}}

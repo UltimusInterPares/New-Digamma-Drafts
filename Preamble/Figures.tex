@@ -7,3 +7,9 @@
     \usetikzlibrary{decorations.pathreplacing}
 \usepackage{amsmath}
 \usepackage{phonrule}
+
+% Figure Captions
+\AtBeginDocument{%
+    \renewcommand{\figurename}{Figura}
+    \renewcommand{\thefigure}{\Roman{figure}}
+}
