@@ -8,3 +8,65 @@
    \babeltags{el = greek}
    
 \usepackage {teubner}
+
+%% Linguistic Characters
+
+% Classical Characters:
+% Digamma is pre-coded into teubner as \F\f or \Digamma\textdigamma
+% Heta is pre-coded as \h
+% Jod/jota is pre-coded as \j
+% Semivowel marker for ι/υ is available \c or \semi
+% Carons for palatalized consonants are encoded as \cap
+
+% My Own Character Sets:
+\newcommand{\w}{\texten{\.{c}}}
+\newcommand{\W}{\texten{\.{C}}}
+
+\newcommand{\vowel}{\texten{\.{v}}}
+\newcommand{\Vowel}{\texten{\.{V}}}
+
+\newcommand{\ash}{\texten{\={\ae}}}
+\newcommand{\Ash}{\texten{\={\AE}}}
+
+\usepackage{amssymb} % for nicer empty set
+    \let\emptyset\varnothing
+\usepackage{units} % for nicer fraction
+    \let\frac\nicefrac
+    
+    \newcommand{\ea}{$\nicefrac{\textrm{\textel{ε}}}{\textrm{\textel{α}}}$}
+    
+% Greek Roots
+\newcommand{\groot}[1]{$\sqrt{\textrm{\textel{#1}}}$}
+\newcommand{\gstem}[1]{$\sqrt[stem]{\textrm{\textel{#1}}}$}
+
+% Incorrect Forms:
+	%Lets you choose Greek or Latin characters
+		% Hopefully
+\newcommand{\iform}[2][G]{%
+  \ifx G#1 \bgroup\sffamily\textsuperscript{\tiny x}\egroup\textel{#2}\else
+  \ifx L#1 \bgroup\sffamily\textsuperscript{\tiny x}\egroup\texten{#2}%
+  \fi\fi
+}
+			% Well hot damn it works
+
+% IPA:
+\usepackage{tipa}
+    \newcommand{\ipa}[1]{\textipa{#1}}
+    
+% Various Brackets
+\usepackage{textcomp}
+    \newcommand{\ortho}[1]{\texten{\textlangle}#1\texten{\textrangle}} % orthographic notation
+    \newcommand{\phonet}[1]{\texten{[}#1\texten{]}} % phonetic notation
+    \newcommand{\phonem}[1]{\texten{/}#1\texten{/}}
+    
+    \newcommand{\spell}[2]{\ortho{\textel{#1}}~\phonem{\ipa{#2}}}
+    
+%%% Historical Characters
+\usepackage{greek6cbc}
+\usepackage{greek4cbc}
+\usepackage{etruscan}
+\usepackage{runic}
+\usepackage{linearb}
+\usepackage{cypriot}
+\usepackage{ugarite}
+\usepackage{oldprsn}
