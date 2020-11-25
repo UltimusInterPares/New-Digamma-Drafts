@@ -1,0 +1,23 @@
+%%% Bibliographies
+
+% a lot is already provided by turabian-formatting
+\usepackage[
+    autocite = footnote,
+    sorting=ynt,
+    annotation]
+    {biblatex-chicago}
+    \addbibresource{Primary.bib}
+    \addbibresource{Secondary.bib}
+    
+\renewcommand{\bibfont}{\normalsize}
+    
+\usepackage{csquotes}
+
+% Links
+\usepackage{hyperref}
+    \hypersetup{
+        colorlinks=true,
+        linkcolor=blue,
+        filecolor=magenta,      
+        urlcolor=cyan,
+    }
