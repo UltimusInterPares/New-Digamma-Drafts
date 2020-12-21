@@ -1,13 +1,23 @@
 %%% Language Formatting
 
 % Language Input and Display
-\usepackage[greek, german, english]{babel}
+\usepackage[french, spanish, greek, german, english]{babel}
    %\languageattribute{greek}{ancient}
    \babeltags{en = english}
    \babeltags{de = german}
    \babeltags{el = greek}
+   \babeltags{fr = french}
+   \babeltags{es = spanish}
    
-\usepackage {teubner}
+   \newcommand{\english}[1]{\texten{\textit{#1}}}
+   \newcommand{\greek}[1]{\textel{\textit{#1}}}
+   \newcommand{\german}[1]{\textde{\textit{#1}}}
+   \newcommand{\french}[1]{\textfr{\textit{#1}}}
+   \newcommand{\spanish}[1]{\textes{\textit{#1}}}
+   
+\usepackage{teubner}
+
+\usepackage{ellipsis} % MOVED HERE FROM AFTER TURABIAN
 
 %% Linguistic Characters
 
@@ -18,44 +28,47 @@
 % Semivowel marker for ι/υ is available \c or \semi
 % Carons for palatalized consonants are encoded as \cap
 
+% IPA:
+\usepackage{tipa}
+    \newcommand{\ipa}[1]{\textipa{#1}}
+    
+    \newcommand{\hellenic}[1]{\textit{\ipa{#1}}} % Common Hellenic and other historical dialects
+    \newcommand{\pie}[1]{\textit{\ipa{#1}}} % Proto Indo European
+
 % My Own Character Sets:
-\newcommand{\w}{\texten{\.{c}}}
-\newcommand{\W}{\texten{\.{C}}}
+\newcommand{\w}{\english{\.{c}}} 
+\newcommand{\W}{\english{\.{C}}}
 
-\newcommand{\vowel}{\texten{\.{v}}}
-\newcommand{\Vowel}{\texten{\.{V}}}
+\newcommand{\vowel}{\english{\.{v}}}
+\newcommand{\Vowel}{\english{\.{V}}}
 
-\newcommand{\ash}{\texten{\={\ae}}}
-\newcommand{\Ash}{\texten{\={\AE}}}
+\newcommand{\ash}{\hellenic{\={\ae}}}
+\newcommand{\Ash}{\hellenic{\={\AE}}}
 
 \usepackage{amssymb} % for nicer empty set
     \let\emptyset\varnothing
 \usepackage{units} % for nicer fraction
     \let\frac\nicefrac
     
-    \newcommand{\ea}{$\nicefrac{\textrm{\textel{ε}}}{\textrm{\textel{α}}}$}
-    \newcommand{\eo}{$\nicefrac{\textrm{\textel{ε}}}{\textrm{\textel{ο}}}$}
+    \newcommand{\ea}{$\nicefrac{\textrm{\greek{ε}}}{\textrm{\greek{α}}}$}
+    \newcommand{\eo}{$\nicefrac{\textrm{\greek{ε}}}{\textrm{\greek{ο}}}$}
     
 % Greek Roots
-\newcommand{\groot}[1]{$\sqrt{\textrm{\textel{#1}}}$}
-\newcommand{\gstem}[1]{$\sqrt[\textrm{stem}]{\textrm{\textel{#1}}}$}
+\newcommand{\groot}[1]{$\sqrt{\textrm{\greek{#1}}}$}
+\newcommand{\gstem}[1]{$\sqrt[\textrm{stem}]{\textrm{\greek{#1}}}$}
 
-\newcommand{\lroot}[1]{$\sqrt{\textrm{#1}}$}
-\newcommand{\lstem}[1]{$\sqrt[\textrm{stem}]{\textrm{#1}}$}
+\newcommand{\lroot}[1]{$\sqrt{\textrm{\english{#1}}}$}
+\newcommand{\lstem}[1]{$\sqrt[\textrm{stem}]{\english{#1}}$}
 
 % Incorrect Forms:
 	%Lets you choose Greek or Latin characters
 		% Hopefully
 \newcommand{\iform}[2][G]{%
-  \ifx G#1 \bgroup\sffamily\texten{\textsuperscript{\tiny x}}\egroup\textel{#2}\else
-  \ifx L#1 \bgroup\sffamily\texten{\textsuperscript{\tiny x}}\egroup\texten{#2}%
+  \ifx G#1 \bgroup\sffamily\english{\textsuperscript{\tiny x}}\egroup\greek{#2}\else
+  \ifx L#1 \bgroup\sffamily\english{\textsuperscript{\tiny x}}\egroup\english{#2}%
   \fi\fi
 }
 			% Well hot damn it works
-
-% IPA:
-\usepackage{tipa}
-    \newcommand{\ipa}[1]{\textipa{#1}}
     
 % Various Brackets
 \usepackage{textcomp}
@@ -63,7 +76,7 @@
     \newcommand{\phonet}[1]{[\ipa{#1}]} % phonetic notation
     \newcommand{\phonem}[1]{/\ipa{#1}/}
     
-    \newcommand{\spell}[2]{\ortho{\textel{#1}}~\phonem{\ipa{#2}}}
+    \newcommand{\spell}[2]{\ortho{\greek{#1}}~\phonem{\ipa{#2}}}
     
 %%% Historical Characters
 \usepackage{greek6cbc}

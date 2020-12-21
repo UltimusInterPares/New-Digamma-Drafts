@@ -1,8 +1,23 @@
 %%% Text Formatting
 
+% Character Input
 \usepackage[utf8]{inputenc}
+		\DeclareUnicodeCharacter{1E5A}{\d{R}}
+		%\DeclareUnicodeCharacter{01FD}{\'{\ae}}
+	    %\DeclareUnicodeCharacter{1E31}{ḱ}
+	    %\DeclareUnicodeCharacter{02B7}{ʷ}
+	    \DeclareUnicodeCharacter{025B}{\ipa{E}}
+	    \DeclareUnicodeCharacter{0254}{\ipa{O}}
+	    \DeclareUnicodeCharacter{21B5}{\rotatebox[origin=c]{180}{$\Rsh$}}
+    
+% Gotta have that font encoding
+\usepackage[T1]{fontenc}
+
+% Nicer Setting
 \usepackage{microtype}
-\usepackage{xcolor}
+
+% Coolors for links
+\usepackage[table]{xcolor}
 
 % Book Sections
 \newcommand{\bookref}[3]{#1~{\MakeUppercase{\romannumeral #2}}.#3} % 1: title, 2: book, 3: location

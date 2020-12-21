@@ -1,0 +1,196 @@
+\section{Reconstructions}\label{sec:Recon}
+
+\subsection{Roots}\label{subsec:Roots}
+The main process used thus far to find the consonant *\w\ between vowels,
+that is, searching for and analyzing intervocalic hiatus, can be
+partially automated. For this purpose, I have written three short scripts
+in a programming language called R, which help to gather and parse
+appropriate evidence.
+
+The first script, called HomeR, is a text miner: a program which reads a
+corpus of text, manipulates it, and provides the requested output. At
+the present moment, HomeR is directed to read every book of the Iliad,
+track each line number (both relative to the book number and to the piece
+as a whole), then strip every accent it finds aside from the diaereses.
+It then takes every word from its line and places it in a new row of
+a table, along with the relevant line and book numbers. In this way, every
+single word of the Iliad -- all 111,861 of them, in the edition used here --
+is prepared for analysis.
+
+HomeR has two companions, the first of which is named ThRax, for the
+Hellenistic grammarian Dionysios Thrax, or \textel{Διονύσιος ὁ Θρᾷξ}.
+ThRax is a Sound Change Applier (SCA), whose sole function is to receive
+a hypothetical reconstructed form of a word, and estimate a descendant
+form. This relies on the premise implied by the relative chronology
+above, that sound changes happen in a rigid order. This means that sound
+changes can be described in a program and systematically applied, allowing
+a reconstructed word form to be passed through a list of changes and
+compared to the attested word order in order to test the veracity of the
+reconstruction.
+
+The second companion is named GoRgias, after the ancient sophist. GoRgias
+is responsible for filtering the output from HomeR in order to build a table of
+potentially useful terms, then guessing at a hypothetical reconstruction,
+which it passes along to ThRax. After the reconstructions are run through
+the relevant sound changes, it and its hypothetical descendant are added
+to the table so that forms can be compared.
+
+These three scripts have been directed to read through the Iliad, then
+filter the resulting table down to one particular scene, Hector's farewell
+to Andromache, specifically \bookref{IL}{6}{390-412, 466-482}. % Break para to avoid back-to-back fig.s
+
+\textcolor{red}{[Add the farewell scene]}
+
+This passage
+is then filtered again to find any instances of intervocalic hiatus, which
+are then separated by inserting the consonant *\w. This happens in three
+phases. First, the consonant is placed between two monophthongs, such as
+\ipa{/e.o/} or \ipa{/a.E:/}. Second, it is placed between a diphthong and
+a monophthong, such as \ipa{/a\textsubarch{I}.E:/} or \ipa{/y\textsubarch{I}.o/}.
+The instructions to GoRgias are worded in such a way that this step will also
+capture hiatus between diphthongs, such as \ipa{/a\textsubarch{I}.o\textsubarch{I}/}.
+Lastly, the consonant is added between a monophthong and a diphthong, such
+as \ipa{/e.o\textsubarch{I}/}.
+
+Running GoRgias with these parameters provides a small number of roots
+which may have once held the consonant *\w.
+
+\textcolor{red}{[Example of an output from GoRgias]}
+
+It should be noted that these scripts are somewhat greedy, and will regularly
+over-capture. For instance, the denominative suffixes \textel{-ιος} $\gets$
+\IE\ *-ios, \textel{-ιᾰ} $\gets$ IE *-i\textsubring{h}\textsubscript{2}, and
+\textel{-ίη} $\gets$ IE *-ieh\textsubscript{2} are all regularly captured and
+reconstructed as \CH\ \iform[L]{-i\w os}, \iform[L]{-i\w a}, and \iform[L]{-i\w\=a}.
+This is, however, currently preferable to under-capturing, as some word forms
+would be inappropriately excluded, such as \textel{ἰάχω} and \textel{Ἀχαιοί}
+$\gets$ CH *\w i\w ak\textsuperscript{h}\=o and
+*Ak\textsuperscript{h}a\textsubarch{\textsci}o\textsubarch{\textsci}. Following
+through to confirm captured words returns a list of ten roots in the passage
+which may have
+had the consonant \w\ at the end of the Common-Attic-Ionic period.
+
+\textcolor{red}{[Roots Table]}
+%\input{Figures/Roots}
+
+\subsection{Suffixes}\label{subsec:Suffixes}
+Together, the scripts also identify a number of suffixes with the consonant *\w.
+This includes some more common suffixes, such as \textel{-αρ, -ων}, and,
+in the passage specifically, \textel{-εις}.
+Some, such as \textel{-ος}, can be confidently distinguished from similar forms --
+here, the o-stem nominative \textel{-ος} -- by their extraneous hiatus,
+but others require more investigation.
+
+The suffixes \textel{-αρ} and \textel{-ων}, found in \textel{στέαρ} and \textel{πίων},
+are both confirmed by examining other derivations from shared roots. \textel{Στέαρ}
+shares a root with both \textel{στάσις} and \textel{ἵστημι}, which provide
+the root \groot{στ\ea-}, with the alternations in vowel quality being a result
+of IE ablaut; \footnote{Cf. Smyth 35-56} while \textel{Πίων} shares its root with
+\textel{πιμέλη}. Given that the forms \textel{στέαρ} and \textel{πίων} show signs
+of a missing consonant, while their cognate derivatives do not, it can be
+confidently argued that the consonant was a part of the suffix, not the roots.
+Both forms disqualify an intervocalic *-s- or *-j-, given the lack of any
+discernible effect on the preceding vowel following elision.
+No compensatory lengthening occurred, disqualifying s-elision, and no
+diphthongs were formed, disqualifying j-elision. The remaining options, then,
+are the forms \textel{στέαρ} $\gets$ CAI *st$\nicefrac{e}{a}$-\w ar and
+*pi-\w \=on. 
+
+The base form of *-\w\=on, however, must have had a short vowel.
+The suffix shows quantitative alternation between cases, with the
+Genitive Singular \textel{-ονος} and the Dative Singular \textel{-ονι},
+suggesting that the omicron \spell{\textel{ο}} is lengthened when in the
+word-final position in much the same way as the final vowel in
+\textel{πάτηρ} and \textel{ἄνηρ}. This gives the suffix' base form
+\textel{-on-}, reconstructed as PAI *-\w\u{o}n-.
+
+\textcolor{red}{\textel{-ων} endings here}
+
+The suffix \textel{-εις} can be reconstructed with an initial *\w.
+It is attested three times in the passage, in the words \textel{ὑληέσσῃ},
+\textel{Τρώεσσιν}, and \textel{βροτόεντα}.
+It can be reasonably expected that the suffix begin with a consonant
+given the construction of the word \textel{βροτ-ό-εντα}, attested with
+an omicron \spell{\textel{ο}} inserted as a connecting vowel, which only
+occurred when the addition of an affix to a stem would have created a
+consonant cluster. The omicron, then, must have been added to separate
+the root-final tau \spell{\textel{τ}} and whatever consonant followed.
+If that consonant had been *-s- or *-j-, then its elision would have
+allowed for contraction between the connecting omicron \spell{\textel{ο}}{o}
+and the suffix-initial epsilon \spell{\textel{ε}} giving the form
+\iform[G]{βροῦντα}. The initial consonant, then, must have again been the
+hypothetical consonant \w.
+
+Much like the suffix \textel{-ων}, the Nominative forms of \textel{-εις}
+obfuscate the base form. Looking at the Genitive, Dative, and Accusative
+forms -- \textel{-εντος}, \textel{-εντι}, and \textel{-εντα}, respectively --
+show the base form \textel{-εντ-}. The Nominative form can be explained
+as the result of two successive consonant contractions, giving the
+process \textel{-εντς} $\to$ \textel{-εινς} $\to$ \textel{-εις}, with
+the long epsilon \spell{\textel{ει}}{e:}
+arising through compensatory
+lengthening. This indicates the CAI form *-\w ents.
+
+\dpara{(e)u} GoRgias also demonstrates a connection between the two
+u-type agent suffixes, \textel{-υς} and \textel{-ευς}. The script, when
+instructed to examine the chosen passage, captures \textel{υἱόν}, the
+Accusative Singular of \textel{υἱύς}; when instructed to examine the
+Iliad as a whole, it captures such terms as \textel{ἡδύς},
+\textel{Ἀχιλλεύς}, and \textel{βασιλεύς}. The declension of the -type
+endings show a strong concordance in their endings (though
+their exact form varies somewhat to satisfy metrical requirements).
+This indicates an etymological relationship between the two, where
+\textel{-ευς}, with a present epsilon \spell{\textel{ε}}{e}, is the
+thematic form of \textel{-υς}, which lacks any such vowel. 
+
+\textcolor{red}{\textel{-(ε)υς} endings here}
+
+\dpara{BRING IT HOME}
+These endings are also noteworthy for what they indicate about the
+consonant *\w: the position of the intervocalic hiatus in these
+endings can indicate the specific quality, the actual pronunciation,
+of the hypothetical consonant.
+Take the Dative Singular ending, variously attested as \textel{-ηϊ}
+or \textel{-εϊ}. The hiatus stands exactly where the Nominative
+singular shows the upsilon \spell{\textel{υ}}{y}, which apparently
+disappeared in declension -- the dative, otherwise, would read as
+\iform[G]{-ηυϊ} or \iform[G]{-ευι}. It has already been determined
+that the consonant was likely either an approximant or a fricative,
+and given that it was related to the upsilon, and that some vowels
+have a relative approximant, specifically in the form of a relative
+semivowel, the pronunciation of the upsilon
+can potentially identify the consonant \w's specific pronunciation.
+
+However, given the historical nature of this relationship, it is not
+useful to examine the pronunciation of upsilon \ortho{υ} as it was
+pronounced in the classical era. At this point, both Attic and
+Ionic speakers pronounced this as the front round vowel \ipa{/y/}
+(cf. Fr \ortho{\textrm{u}} and De \ortho{\textrm{\"u}}, however it
+was fronted some time between 700 and 400 \textsc{b.c.e.}, moving
+from its original pronunciation as a back round vowel \ipa{/u/} (cf.
+Fr \ortho{\textrm{ou}} and De \ortho{\textrm{u}}).\autocite[529]{malikouti-drachman_bortone_2015}
+In this instance, then, the vowel upsilon \ortho{υ} needs to be
+analyzed as that back round vowel. 
+
+\textcolor{red}{[Semivowel relationship chart]}
+%\input{Figures/Semivowels}
+
+With this in mind, the behavior of the upsilon \ortho{υ} indicates
+that the historic consonant likely was pronounced as \ipa{/w/},
+the sound of the Gnglish letter double-u \ortho{\textrm{w}}. 
+The pronunciation of the two sounds are near-identical, excepting
+for differences in quantity -- that is, the vowel \ipa{/u/} is typically
+held longer than the semivowel \ipa{/w/}. In fact, the specific features
+of these sounds -- literally the physical methods used in their pronunciation,
+such has tongue position and tension -- have a near perfect correlation,
+except that \ipa{/w/} is labeled as a consonant and \ipa{/u/} a vowel.
+This would explain the behavior of the upsilon \ortho{υ} in u-type
+endings, with the short, intervocalic /u/ being re-bracketed, being
+understood not as the end of the prior syllable but the beginning of the
+latter, and then re-analyzed as a semivowel, which was subsequently elided.
+The dative, then, progressed from the Common-Attic-Ionic
+*-$\nicefrac{e}{\bar{e}}$u.i $\to$ *-$\nicefrac{e}{\bar{e}}$.ui $\to$
+*-$\nicefrac{e}{\bar{e}}$.wi $\to$ Homeric
+-\textel{$\nicefrac{\textrm{\textel{ε}}}{\textrm{\textel{η}}}$ϊ}
+
+\textcolor{red}{[Input final reconstruction!!!?!?!1`!]}
