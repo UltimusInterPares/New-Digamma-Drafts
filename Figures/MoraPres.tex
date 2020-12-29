@@ -3,37 +3,46 @@
     \begin{tikzpicture}[sibling
         distance=10pt,
         level distance=25pt]
+        
+        %\draw (0,0) grid (5,-3);
+        %\draw[dashed, step=.25] (0,0) grid (5,-3);
     
         \Tree[.\textel{σ}
-                [.\textel{ρ} 
-                    [.\textel{μ} \textit{v} ]
-                    [.\textel{μ} \textit{c} ] ]
-                ]
+            [.\textel{ρ} 
+                [.\textel{μ} v ]
+                [.\textel{μ} c ]
+            ]
+        ]
     
         \begin{scope}[shift={(35pt,0pt)}]
             \Tree[.\textel{σ} 
                     [.\textel{ω}
-                        [.\textel{μ} \node(s1){\textit{s}}; ] ]
+                        [.\textel{μ} \textit{h} ]
+                    ]
                 ]
         \end{scope}
         
         \begin{scope}[shift={(85pt, 0pt)}]
             \Tree[.\textel{σ}
                     [.\textel{ρ} 
-                        [.\textel{μ} \node(s2){\textit{v:}}; ]
-                        [.\textel{μ} \textit{c} ] ]
+                        [.\textel{μ} v: ]
+                        [.\textel{μ} c  ]
+                    ]
                   ]
         \end{scope}
         
         \begin{scope}[shift={(120pt,0pt)}]
             \Tree[.\textel{σ} 
                     [.\textel{ω} 
-                        [.\node(digamma){\textel{μ}}; \textcolor{gray}{$\emptyset$} ] ]
+                        [.\textel{μ} \textcolor{gray}{$\emptyset$} ] ]
                 ]
         \end{scope}
         
-        \draw[->](s1)--(s2);
-        \draw[dotted](digamma)--(s2);
+        \draw[->] (1.5,-2.5)--(2.25,-2.5);
+        \draw[dotted] (4,-1.875)--(2.75,-2.375);
+        
+%        \draw[->](s1)--(s2);
+%        \draw[dotted](digamma)--(s2);
             
     \end{tikzpicture}
     \caption{Compensatory Lengthening by Mora Preservation}

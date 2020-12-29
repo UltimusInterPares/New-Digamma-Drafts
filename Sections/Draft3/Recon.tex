@@ -1,0 +1,32 @@
+\section{Reconstructions}\label{sec:Recon}
+The one-by-one nature of sound changes leaves room for automation. Regular changes mean allow for a computer to search for evidence of a process, guess at reconstructions, and test the veracity of its own guesses.  To this end, I have written three short scripts in a programming language called R, which currently search for instances of the hypothetical consonant *\w\ between vowels.
+
+The first script is named HomeR. It is a text miner, which is to say that it reads, manipulates, and assists in the analysis of written text. Currently, it reads the entire text of the Iliad, one book at a time. HomeR then places each line into a table, and labels the lines with their Global Line Number, which is the line's position in the epic; their Book Number, which is the book from which a line is retrieved; and the Relative Line Number, which is the line's position in that book. HomeR then tokenizes the text, which is to say it splits each line into distinct tokens. A token is a textual variable, which can be defined as one of multiple levels, including lines of text, words, and individual letters. In this instance, HomeR defines a token as a word, and so places each word into its own row along with the requisite book and line numbers.
+
+\noindent\textcolor{red}{Input HomeR output}
+\input{Figures/HomeRExample}
+
+The second script is named ThRax, after the Hellenistic grammarian Dionysios Thrax. It is a sound change applier, a program which holds the details of any phonological process, including the phoneme(s) to change, the constraints of the change, and the result. ThRax takes a word or series of words as an input, either from a list or the column of a table, which then pass through each programmed sound change in order, and then return as newer derivations. 
+
+ThRax cannot assert the validity of a reconstruction on its own, since more than one possible reconstruction may give the same result. Both \hellenic{*kal\w os} and \iform[L]{kalhos}, for example, would both return \greek{κᾱλός}, a valid derivation for Homeric Greek. Prior knowledge of the different reflexes of \W-Elision in Attic and Homeric Greek is necessary to identify \iform[L]{kalhos} as an incorrect reconstruction. Some reconstructions, however, can be disqualified with a surface-level analysis of ThRax' output. The incorrect reconstruction \iform[L]{kaljos} would return \iform[L]{κᾰλλός}, which is disqualifiable at a glance.
+
+The third and final script is named GoRgias, after the Athenian sophist and philosopher. GoRgias is a management tool, and the primary means of interfacing with HomeR and ThRax. It has four components. First, it reads the output from HomeR and sets the scope of the text to be analyzed. Second, it reads through that scope and sets the parameters to search for. Third, it transcribes the text in question into the International Phonetic Alphabet. Lastly, it guesses at a reconstruction of whatever terms match the search parameters, and sends them through ThRax. The filtered results from HomeR, the guessed reconstructions, and the results from ThRax are then bundled into a table for further analysis. Given that ThRax relies on manually defined sound change rules, the user can easily alter what point in time the scripts should reconstruct to. Any word form could be treated as older or newer depending on how far back in the chronology ThRax is programmed for. If ThRax were given every change back to the start of the Common-Hellenic period, then the input from GoRgias would essentially be treated as a Common-Hellenic form, since it would pass through all of the changes restricted to forms from that time period.  Since this paper has focused on reconstructing the hypothetical consonant *\w\ to its latest possible days, and since the elision of the consonant *\w\ predates the split between the Attic and Ionic dialects, the scripts will work to reconstruct the consonant as it was in the last days of the Common-Attic-Ionic period. 
+
+\marginnote{Rough transition.} When searching for roots, GoRgias is instructed to reduce the scope of analysis to one scene from book VI, namely  Hector's farewell to Andromache and his prayer for Astyanax, in \bookref{Iliad}{6}{390-412; 476-481}. In searching for affixes, \edit{it parses the entire epic}{Fewer affixes than roots in general!}. It then searches through the passage and filters the results to any instances of intervocallic hiatus. The consonant *\w\ is then inserted between vowels in three phases. First, the consonant is placed between two monophthongs, such as \ipa{/e.o/} or \ipa{/a.E:/}. Second, it is placed between a diphthong and a monophthong, such as \ipa{/a\textsubarch{I}.E:/} or \ipa{/y\textsubarch{I}.o/}. The instructions to GoRgias are worded in such a way that this step will also capture hiatus between diphthongs, such as \ipa{/a\textsubarch{I}.o\textsubarch{I}/}. Lastly, the consonant is added between a monophthong and a diphthong, such as \ipa{/e.o\textsubarch{I}/}. 
+
+\noindent\textcolor{red}{Input GoRgias example}
+\input{Figures/ThRaxExample}
+
+Note that these scripts are greedy, and will generally over-capture. For instance, the denominal suffixes \greek{-ιος} from PIE \pie{*-i-os}, \greek{-ιᾰ} $\gets$ PIE \pie{*-i-h}\textit{\textsubscript{2}}, and \greek{-ίη} $\gets$ PIE \pie{-\'\i-eh}\textit{\textsubscript{2}} are all consistently captured and reconstructed as Common-Hellenic \iform[L]{-i\w os}, \iform[L]{-i\w\u{a}}, and \iform[L]{-i\w\=a}. This is preferable to under-capturing, as some forms may be inappropriately excluded, such as \greek{ἰάχω} $\gets$ CH \hellenic{*(\w)i\w ak\super{h}\=o} and \greek{Ἀχαιοί} $\gets$ CH  \hellenic{*ak\super{h}a\textsubarch{I}\w o\textsubarch{I}}. Analysis of GoRgias' findings indicates a list of ten roots in the passage which may have had the consonant *\w\ at the end of the Common-Attic-Ionic period.
+
+\noindent\textcolor{red}{Input roots list}
+\input{Figures/Roots}
+
+\subsection{Suffixes}
+
+\noindent\textcolor{red}{[Transition para]}
+
+\noindent\textcolor{red}{Love yourself and write a para for -wos. Here, I'll even get you started!}
+for example, -ος in κεραός "horned" can be differentiated from the typical nominative -ος in δρόμος "race". 
+
+%\input{Figures/FarewellRecon}
