@@ -3,7 +3,7 @@ The one-by-one nature of sound changes leaves room for automation. Regular chang
 
 The first script is named HomeR. It is a text miner, which is to say that it reads, manipulates, and assists in the analysis of written text. Currently, it reads the entire text of the Iliad, one book at a time. HomeR then places each line into a table, and labels the lines with their Global Line Number, which is the line's position in the epic; their Book Number, which is the book from which a line is retrieved; and the Relative Line Number, which is the line's position in that book. HomeR then tokenizes the text, which is to say it splits each line into distinct tokens. A token is a textual variable, which can be defined as one of multiple levels, including lines of text, words, and individual letters. In this instance, HomeR defines a token as a word, and so places each word into its own row along with the requisite book and line numbers.
 
-\noindent\textcolor{red}{Input HomeR output}
+%\noindent\textcolor{red}{Input HomeR output}
 \input{Figures/HomeRExample}
 
 The second script is named ThRax, after the Hellenistic grammarian Dionysios Thrax. It is a sound change applier, a program which holds the details of any phonological process, including the phoneme(s) to change, the constraints of the change, and the result. ThRax takes a word or series of words as an input, either from a list or the column of a table, which then pass through each programmed sound change in order, and then return as newer derivations. 
@@ -12,21 +12,140 @@ ThRax cannot assert the validity of a reconstruction on its own, since more than
 
 The third and final script is named GoRgias, after the Athenian sophist and philosopher. GoRgias is a management tool, and the primary means of interfacing with HomeR and ThRax. It has four components. First, it reads the output from HomeR and sets the scope of the text to be analyzed. Second, it reads through that scope and sets the parameters to search for. Third, it transcribes the text in question into the International Phonetic Alphabet. Lastly, it guesses at a reconstruction of whatever terms match the search parameters, and sends them through ThRax. The filtered results from HomeR, the guessed reconstructions, and the results from ThRax are then bundled into a table for further analysis. Given that ThRax relies on manually defined sound change rules, the user can easily alter what point in time the scripts should reconstruct to. Any word form could be treated as older or newer depending on how far back in the chronology ThRax is programmed for. If ThRax were given every change back to the start of the Common-Hellenic period, then the input from GoRgias would essentially be treated as a Common-Hellenic form, since it would pass through all of the changes restricted to forms from that time period.  Since this paper has focused on reconstructing the hypothetical consonant *\w\ to its latest possible days, and since the elision of the consonant *\w\ predates the split between the Attic and Ionic dialects, the scripts will work to reconstruct the consonant as it was in the last days of the Common-Attic-Ionic period. 
 
-\marginnote{Rough transition.} When searching for roots, GoRgias is instructed to reduce the scope of analysis to one scene from book VI, namely  Hector's farewell to Andromache and his prayer for Astyanax, in \bookref{Iliad}{6}{390-412; 476-481}. In searching for affixes, \edit{it parses the entire epic}{Fewer affixes than roots in general!}. It then searches through the passage and filters the results to any instances of intervocallic hiatus. The consonant *\w\ is then inserted between vowels in three phases. First, the consonant is placed between two monophthongs, such as \ipa{/e.o/} or \ipa{/a.E:/}. Second, it is placed between a diphthong and a monophthong, such as \ipa{/a\textsubarch{I}.E:/} or \ipa{/y\textsubarch{I}.o/}. The instructions to GoRgias are worded in such a way that this step will also capture hiatus between diphthongs, such as \ipa{/a\textsubarch{I}.o\textsubarch{I}/}. Lastly, the consonant is added between a monophthong and a diphthong, such as \ipa{/e.o\textsubarch{I}/}. 
+\marginnote{Rough transition. (Minimalist?)} When searching for roots, GoRgias is instructed to reduce the scope of analysis to one scene from book VI, namely  Hector's farewell to Andromache and his prayer for Astyanax, in \bookref{Iliad}{6}{390-412; 476-481}. In searching for affixes, \edit{it parses the entire epic}{Fewer affixes than roots in general!}. It then searches through the passage and filters the results to any instances of intervocallic hiatus. The consonant *\w\ is then inserted between vowels in three phases. First, the consonant is placed between two monophthongs, such as \ipa{/e.o/} or \ipa{/a.E:/}. Second, it is placed between a diphthong and a monophthong, such as \ipa{/a\textsubarch{I}.E:/} or \ipa{/y\textsubarch{I}.o/}. The instructions to GoRgias are worded in such a way that this step will also capture hiatus between diphthongs, such as \ipa{/a\textsubarch{I}.o\textsubarch{I}/}. Lastly, the consonant is added between a monophthong and a diphthong, such as \ipa{/e.o\textsubarch{I}/}. 
 
-\noindent\textcolor{red}{Input GoRgias example}
+%\noindent\textcolor{red}{Input GoRgias example}
 \input{Figures/ThRaxExample}
 
 Note that these scripts are greedy, and will generally over-capture. For instance, the denominal suffixes \greek{-ιος} from PIE \pie{*-i-os}, \greek{-ιᾰ} $\gets$ PIE \pie{*-i-h}\textit{\textsubscript{2}}, and \greek{-ίη} $\gets$ PIE \pie{-\'\i-eh}\textit{\textsubscript{2}} are all consistently captured and reconstructed as Common-Hellenic \iform[L]{-i\w os}, \iform[L]{-i\w\u{a}}, and \iform[L]{-i\w\=a}. This is preferable to under-capturing, as some forms may be inappropriately excluded, such as \greek{ἰάχω} $\gets$ CH \hellenic{*(\w)i\w ak\super{h}\=o} and \greek{Ἀχαιοί} $\gets$ CH  \hellenic{*ak\super{h}a\textsubarch{I}\w o\textsubarch{I}}. Analysis of GoRgias' findings indicates a list of ten roots in the passage which may have had the consonant *\w\ at the end of the Common-Attic-Ionic period.
 
-\noindent\textcolor{red}{Input roots list}
+%\noindent\textcolor{red}{Input roots list}
 \input{Figures/Roots}
 
 \subsection{Suffixes}
 
 \noindent\textcolor{red}{[Transition para]}
 
-\noindent\textcolor{red}{Love yourself and write a para for -wos. Here, I'll even get you started!}
-for example, -ος in κεραός "horned" can be differentiated from the typical nominative -ος in δρόμος "race". 
+%\noindent\textcolor{red}{Love yourself and write a para for -wos. Here, I'll even get you started!}
+%for example, -ος in κεραός "horned" can be differentiated from the typical nominative -ος in δρόμος "race". 
 
-%\input{Figures/FarewellRecon}
+Together, the scripts also identify a number of suffixes with the consonant *\w.
+This includes some more common suffixes, such as \greek{-ος, -αρ, -ων}, and,
+in the passage specifically, \greek{-εις}.
+
+The adjectival suffix \greek{-ος} is distinguishable from the nominal \greek{-ος} in two key ways. First, in vowel-stem terms, the suffix-initial omicron \ortho{\greek{ο}} conspicuously does not contract with the stem-final vowel, such as in \greek{κεραός} ``horned''. Second, in consonant-stem terms, Homeric shows long vowels corresponding to Attic short vowels, such as in A \greek{ὅλος} and H \greek{οὖλος}, or A \greek{ξένος} and H \greek{ξεῖνος}. There is no lowering of mid-high long vowels, implying compensatory lengthening from the loss of *\w, and giving the Common-Attic-Ionic suffix \hellenic{*-\w os}
+
+The suffixes \greek{-αρ} and \greek{-ων}, found in \greek{στέαρ} and \greek{πίων},
+are both confirmed by examining other derivations from shared roots. \greek{Στέαρ}
+shares a root with both \greek{στάσις} and \greek{ἵστημι}, which provide
+the root \groot{στ\ea-}, with the alternations in vowel quality being a result
+of IE ablaut; \footnote{Cf. Smyth 35-56} while \greek{Πίων} shares its root with
+\greek{πιμέλη}. Given that the forms \greek{στέαρ} and \greek{πίων} show signs
+of a missing consonant, while their cognate derivatives do not, it can be
+confidently argued that the consonant was a part of the suffix, not the roots.
+Both forms disqualify an intervocalic \hellenic{*-h-} or \hellenic{*-j-}, given the lack of any
+discernible effect on the preceding vowel following elision.
+No compensatory lengthening occurred, disqualifying H-Elision, and no
+diphthongs were formed, disqualifying J-Elision. The remaining options, then,
+are the forms \greek{στέαρ} $\gets$ CAI \hellenic{*st$\nicefrac{e}{a}$-\w ar} and
+\hellenic{*pi-\w \=on}. 
+
+The base form of \hellenic{*-\w\=on}, however, must have had a short vowel.
+The suffix shows quantitative alternation between cases, with the
+Genitive Singular \greek{-ονος} and the Dative Singular \greek{-ονι},
+suggesting that the omicron \ortho{\greek{ο}} is lengthened when in the
+word-final position in much the same way as the final vowel in
+\greek{πάτηρ} and \greek{ἄνηρ}. This gives the suffix' base form
+\greek{-on-}, reconstructed as PAI \hellenic{*-\w\u{o}n-}.
+
+%\textcolor{red}{\textel{-ων} endings here}
+\input{Figures/On-Type}
+
+The suffix \greek{-εις} can be reconstructed with an initial *\w.
+It is attested three times in the passage, in the words \greek{ὑληέσσῃ},
+\greek{Τρώεσσιν}, and \greek{βροτόεντα}.
+It can be reasonably expected that the suffix begin with a consonant
+given the construction of the word \greek{βροτ-ό-εντα}, attested with
+an omicron \ortho{\greek{ο}} inserted as a connecting vowel, which only
+occurred when the addition of an affix to a stem would have created a
+consonant cluster. The omicron, then, must have been added to separate
+the root-final tau \ortho{\greek{τ}} and whatever consonant followed.
+If that consonant had been \hellenic{*-h-} or \hellenic{*-j-}, then its elision would have
+allowed for contraction between the connecting omicron \ortho{\greek{ο}}
+and the suffix-initial epsilon \ortho{\greek{ε}} giving the form
+\iform[G]{βροῦντα}. The initial consonant, then, must have again been the
+hypothetical consonant \w.
+
+Much like the suffix \greek{-ων}, the Nominative forms of \greek{-εις}
+obfuscate the base form. Looking at the Genitive, Dative, and Accusative
+forms -- \greek{-εντος}, \greek{-εντι}, and \greek{-εντα}, respectively --
+show the base form \greek{-εντ-}. The Nominative form can be explained
+as the result of two successive consonant contractions, giving the
+process \greek{-εντς} $\to$ \greek{-ενς} $\to$ \greek{-εις}, with
+the long epsilon \ortho{\greek{ει}}
+arising through compensatory
+lengthening. This indicates the CAI form \hellenic{*-\w ents}.
+
+%\dpara{(e)u}
+GoRgias also demonstrates a connection between the two
+u-type agent suffixes, \greek{-υς} and \greek{-ευς}. The script, when
+instructed to examine the chosen passage, captures \greek{υἱόν}, the
+Accusative Singular of \greek{υἱύς}; when instructed to examine the
+Iliad as a whole, it captures such terms as \greek{ἡδύς},
+\greek{Ἀχιλλεύς}, and \greek{βασιλεύς}. The declension of the -type
+endings show a strong concordance in their endings (though
+their exact form varies somewhat to satisfy metrical requirements).
+This indicates an etymological relationship between the two, where
+\greek{-ευς}, with an epsilon \ortho{\greek{ε}}, is the
+thematic form of \greek{-υς}, which lacks any such vowel. 
+
+%\textcolor{red}{\greek{-(ε)υς} endings here}
+\input{Figures/U-Type}
+
+%\dpara{BRING IT HOME}
+These endings are also noteworthy for what they indicate about the
+consonant *\w: the position of the intervocalic hiatus in these
+endings can indicate the specific quality, the actual pronunciation,
+of the hypothetical consonant.
+Take the Dative Singular ending, variously attested as \greek{-ηϊ}
+or \greek{-εϊ}. The hiatus stands exactly where the Nominative
+singular shows the upsilon \ortho{\greek{υ}}, which apparently
+disappeared in declension -- the dative, otherwise, would read as
+\iform[G]{-ηυϊ} or \iform[G]{-ευι}. It has already been determined
+that the consonant was likely either an approximant or a fricative,
+and given that it was related to the upsilon, and that some vowels
+have a relative approximant, specifically in the form of a relative
+semivowel, the pronunciation of the upsilon
+can potentially identify the consonant \w's specific pronunciation.
+
+However, given the historical nature of this relationship, it is not
+useful to examine the pronunciation of upsilon \ortho{υ} as it was
+pronounced in the classical era. At this point, both Attic and
+Ionic speakers pronounced this as the front round vowel \ipa{/y/},\footnote{Cf. Fr \french{u} and De \german{\"u}} however it
+was fronted some time between 700 and 400 \textsc{b.c.e.}, moving
+from its original pronunciation as a back round vowel \ipa{/u/}.\autocite[529]{malikouti-drachman_bortone_2015}
+In this instance, then, the vowel upsilon \ortho{υ} needs to be
+analyzed as that back round vowel. 
+
+%\textcolor{red}{[Semivowel relationship chart]}
+\input{Figures/Semivowels}
+
+With this in mind, the behavior of the upsilon \ortho{υ} indicates
+that the historic consonant likely was pronounced as \ipa{/w/},
+the sound of the English letter double-u \ortho{\english{w}}. 
+The pronunciation of the two sounds are near-identical, excepting
+for differences in quantity. That is, the vowel \ipa{/u/} is typically
+held longer than the semivowel \ipa{/w/}. Even the specific features
+of these sounds have a near perfect correlation,
+except that \ipa{/w/} is labeled as a consonant and \ipa{/u/} a vowel.
+This would explain the behavior of the upsilon \ortho{\greek{υ}} in u-type
+endings, with the short, intervocalic \ipa{/u/} being re-bracketed, being
+understood not as the end of the prior syllable but the beginning of the
+latter, and then re-analyzed as a semivowel, which was subsequently elided.
+The dative, then, progressed from the Common-Attic-Ionic
+\hellenic{*-$\nicefrac{e}{\bar{e}}$\textsubarch{u}.i} $\to$
+\hellenic{*-$\nicefrac{e}{\bar{e}}$.\textsubarch{u}i} $=$
+\hellenic{*-$\nicefrac{e}{\bar{e}}$.wi} $\to$ Homeric
+-\greek{$\nicefrac{\textrm{\greek{ε}}}{\textrm{\greek{η}}}$ϊ}
+
+\input{Figures/FeaturesIII}
